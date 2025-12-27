@@ -20,9 +20,9 @@ The main question in this process is how to guarantee that sentences generated i
 
 - Abstract this problem as: given two distributions $p(x)$ and $q(x)$, can we sample data from $p(x)$ but required the sample follows $q(x)$?
 
-- Use the following algorithm: ![1](.github/speculative-decoding.png)
+- Use the following algorithm: ![1](assets/speculative-decoding.png)
 
-- Prove: ![2](.github/speculative-decoding-proof.png)
+- Prove: ![2](assets/speculative-decoding-proof.png)
 
 
 ## Lossy Acceleration
@@ -58,4 +58,5 @@ Several problems with quantization:
 Popular for diffusion models and language models.
 
 The basic idea is to train a small model to predict the output of a large model, also monitor the result:
+
 - loss = $loss(g_\theta(x), f(x)) + \alpha loss(g_\theta(x), y)$, where $g_\theta$ is the small model, $f$ is the large model, $\alpha$ is the coefficient, and $y$ is the ground truth.
