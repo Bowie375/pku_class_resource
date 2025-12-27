@@ -40,7 +40,11 @@ There are three different positional encoding methods:
 1. Absolute Positional Encoding: the method proposed and used in the original transformer paper(Attention is all you need).
     - key ideas: directly add(literally add operation) manually designed position code vector to the word embedding, only add position encoding at the very beginning of the model.
 
-    - design reasons: the encoding is $$ p_i = \left( \begin{array}{c} sin(i/10000^{2*1/d}) \\ cos(i/10000^{2*1/d}) \\ \vdots \\ sin(i/10000^{2*{\frac{d}{2}}/d}) \\ cos(i/10000^{2*\frac{d}{2}/d}) \\ \end{array} \right) $$ and it can be seen the the $<p_i, p_{i+k}>$ is the invariant to i, so relevance of position embedding only dependes on the distance between two words.
+    - design reasons: the encoding is
+        ```math
+        p_i = \left( \begin{array}{c} sin(i/10000^{2*1/d}) \\ cos(i/10000^{2*1/d}) \\ \vdots \\ sin(i/10000^{2*{\frac{d}{2}}/d}) \\ cos(i/10000^{2*\frac{d}{2}/d}) \\ \end{array} \right)
+        ```
+        and it can be seen that $\langle p_i, p_{i+k}\rangle$ is invariant to *i*, so the relevance of positional encoding depends only on the distance between two words.
 
     - drawbacks: position encoding is only add before the first block, once after non-linear transformation, the idea that position encoding is invariant to i is lost.
 
@@ -51,4 +55,5 @@ There are three different positional encoding methods:
 
 
 3. Rotational Positional Encoding: the most popular and successful method in recent Large Transformer models.
+
     - key ideas: quite like relative position encoding, but it is not added to the score matrix, it applys a rotation matrix to the socre matrix: ![RoPE](assets/RoPE.png)
