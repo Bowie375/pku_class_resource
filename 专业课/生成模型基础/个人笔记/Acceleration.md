@@ -6,12 +6,12 @@ Basic Ideas: Let small language model generate a draft and let a large model rev
 
 1. Draft construction:
     - Given previous context $s = (x_1, \ldots, x_t)$
-    - Generate the following draft sequence: $(\tilde{x}_{t+1}, \ldots, \tilde{x}_{t+m})$
+    - Generate the following draft sequence: $(\tilde{x}\_{t+1}, \ldots, \tilde{x}\_{t+m})$
     - This process can be done using a small language model with low computational cost.
 
 2. Draft verification:
-    - Feed the sentence $s' = (x_1, \ldots, x_t, \tilde{x}_{t+1}, \ldots, \tilde{x}_{t+m})$ to a large model with a single pass.
-    - The LLM will give the probabilities of each toke in $(\tilde{x}_{t+1}, \ldots, \tilde{x}_{t+m})$ simultaneously.
+    - Feed the sentence $s' = (x_1, \ldots, x_t, \tilde{x}\_{t+1}, \ldots, \tilde{x}\_{t+m})$ to a large model with a single pass.
+    - The LLM will give the probabilities of each toke in $(\tilde{x}\_{t+1}, \ldots, \tilde{x}\_{t+m})$ simultaneously.
     - Discard the tokens starts from the first wrong token that the small LM predicts.
     - Remain the tokens that LLM has the same prediction as the small model.
     - Feed the revised sentence to the small LM and loop back.
@@ -60,3 +60,4 @@ Popular for diffusion models and language models.
 The basic idea is to train a small model to predict the output of a large model, also monitor the result:
 
 - loss = $loss(g_\theta(x), f(x)) + \alpha loss(g_\theta(x), y)$, where $g_\theta$ is the small model, $f$ is the large model, $\alpha$ is the coefficient, and $y$ is the ground truth.
+
