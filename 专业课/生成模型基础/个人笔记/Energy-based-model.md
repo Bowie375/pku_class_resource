@@ -1,3 +1,6 @@
+### Overview
+Energy-based model directly models the probability distribution of data. Current practice of energy-based model cannot achieve satisfying result.
+
 ### Energy-based model in physics
 - Energy-based model originates in statistical physics:
     - Assume $x$ is the state of a system(e.g., thermodynamic)
@@ -120,3 +123,4 @@ What we can do: iteratively generate a data that has higher probability than the
 ![](assets/energy-based-5.png)
 
 **NOTE:** The randomness added in MCMC and Langevin Sampling can make sure the output is really sampled from the target distribution instead of stucking at the data with highest probability.
+
