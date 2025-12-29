@@ -28,12 +28,11 @@ Energy-based model directly models the probability distribution of data. Current
 ### Why energy-based model?
 - For all generative models, we are trying to model the probability distribution of the data
     - This can be done in different ways:
-        1. Directly model the distribution: like autoregressive models, they can directly output the possibility of each pixel/word/frame
+        1. Directly model the distribution: like autoregressive models, or flow-based models, they can directly output the possibility of each pixel/word/frame
         2. Indirectly model the distribution, model the parameters of the distribution: like VAE, encoder extracts the latent code(which can be deemed as the parameters of the distribution) and decoder samples the data using those parameters.
         3. Indirectly model the distribution, directly model the sampling process. In these methods, models try to learn the mapping from noise to dat. The main regard of these models is whether the sampled data comes from the target distribution:
             - GAN: don't have encoder, use distance between distribution as loss
             - Diffusion models: use reconstruction as loss(the reconstruction in diffusion doesn't apply to the input and output, but also apply to every intermediate state)
-            - flow-based models
 
 - Now for energy-based model, we are trying to directly model the distribution of the data(giving out the possibility of each data point).
 
@@ -123,4 +122,5 @@ What we can do: iteratively generate a data that has higher probability than the
 ![](assets/energy-based-5.png)
 
 **NOTE:** The randomness added in MCMC and Langevin Sampling can make sure the output is really sampled from the target distribution instead of stucking at the data with highest probability.
+
 
